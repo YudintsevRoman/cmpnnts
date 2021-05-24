@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>btf</title>
+    <style>
+        @font-face {
+            font-family: EurostileLTStd-Ex2; /* Имя шрифта */
+            src: url(EurostileLTStd-Ex2.ttf); /* Путь к файлу со шрифтом */
+        }
+    </style>
+    <script src="main.tsx"></script>
+    <script>
+        // setInterval(() => document.getElementById("testdigit").setAttribute('value', Math.floor(Math.random()*10)), 1000); // (5)
+    </script>
+</head>
+<body style="background-image: url('refs/main.jpg'); background-clip: padding-box; background-repeat: no-repeat; background-position: center; width: 1000px; height: 600px;">
+<div id="fl"></div>
+<div id="fl2"></div>
+<div style="top: 25px;position: absolute;left: 480px;">
+    <div id="fld"></div>
+<btf-watches color="#ff0000"></btf-watches>
+</div>
+<br/>
+<div>
+<btf-digit id="testdigit" value="1"></btf-digit>
+</div>
+</body>
+</html>
