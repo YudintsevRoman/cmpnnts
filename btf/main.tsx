@@ -4,10 +4,14 @@ class Btfwatches extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ["color", "title"];
+        return ["color", "title", "value"];
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
+        if (name == "value" && newValue != null) {
+            this.fixTime = true;
+            this.btfValue = newValue;
+        }
         this.update();
     }
 
@@ -82,6 +86,10 @@ class Btfwatches extends HTMLElement {
         this.digitColor = this.getAttribute('color') || "#00AA00";
         this.digitTitle = this.getAttribute('title') || "";
         let showDate = new Date();
+        if (this.fixTime) {
+            showDate.setTime(Date.parse(this.btfValue));
+        }
+
         if (this.firstElementChild == null)
             return;
         this.btfmonthnode   = this.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling;
@@ -95,7 +103,7 @@ class Btfwatches extends HTMLElement {
         this.monthName  = [ this.btfmonthnode.firstElementChild,
                             this.btfmonthnode.firstElementChild.nextElementSibling,
                             this.btfmonthnode.firstElementChild.nextElementSibling.nextElementSibling];
-        
+
         this.drawWord(this.monthName, showDate.toString().split(" ")[1]);
         this.btfday     = [ this.btfdaynode.firstElementChild,
                             this.btfdaynode.firstElementChild.nextElementSibling];
@@ -112,7 +120,7 @@ class Btfwatches extends HTMLElement {
         this.drawNumber(this.btfhours, showDate.getHours());
 
         this.btfsec = [this.btfsecnode.firstElementChild];
-        this.drawPoint(this.btfsec, showDate.getSeconds() % 2);
+        this.drawPoint(this.btfsec, new Date().getSeconds() % 2);
 
         this.btfminutes = [ this.btfminnode.firstElementChild,
                             this.btfminnode.firstElementChild.nextElementSibling];
@@ -264,11 +272,9 @@ class BtfLetter extends BtfSymbol {
     }
     attributeChangedCallback(name, oldValue, newValue) {
         this.update();
-        // this.getSymbol("g");
     }
 
     getSymbol(letter = "") {
-        console.log(letter);
         let result = [];
         let w  = 44; let h = 74; let t = 8; let gs = 1; let sk = 1;
         let s = 3*t/5;
