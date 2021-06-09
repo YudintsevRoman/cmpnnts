@@ -75,7 +75,7 @@ class Btfwatches extends HTMLElement {
             "</div></div>"+
             "</div>";
 
-        this.timer = setInterval(() => this.update(), 5000);
+        this.timer = setInterval(() => this.update(), 1000);
         this.update();
     }
     update() {
@@ -95,9 +95,8 @@ class Btfwatches extends HTMLElement {
         this.monthName  = [ this.btfmonthnode.firstElementChild,
                             this.btfmonthnode.firstElementChild.nextElementSibling,
                             this.btfmonthnode.firstElementChild.nextElementSibling.nextElementSibling];
-        let ls = "vvvvv"; //"janfebmaraprmayjunjulaugsepoctnovdec";
-        this.drawWord(this.monthName, ls.substr(Math.floor(Math.random()*(ls.length-2)),3));
-        // this.drawWord(this.monthName, showDate.toString().split(" ")[1]);
+        
+        this.drawWord(this.monthName, showDate.toString().split(" ")[1]);
         this.btfday     = [ this.btfdaynode.firstElementChild,
                             this.btfdaynode.firstElementChild.nextElementSibling];
         this.drawNumber(this.btfday, showDate.getDate());
@@ -326,8 +325,16 @@ class BtfLetter extends BtfSymbol {
             case "n": all.splice(4,3);
                 all.push([[t+gs+sk*2+gs, t+gs], [t+gs+sk*2+gs+s, t+gs], [t+ow+gs+sk*2, h/2-t-sd], [t+ow+gs+sk*2, h/2-t/2-gs], [t+ow+sk*2-sd, h/2-t/2], [t+gs+sk*2+gs, t+2*gs+s]]); // center  for N
                 result = all; break;
+            case "m":
+                all.splice(4,3);
+                all.push([[t+gs+sk*2+gs, t+gs], [t+gs+sk*2+gs+s, t+gs], [t+ow/2+gs+sk*2, h*2/5-t-sd], [t+ow/2+gs+sk*2, h*2/5-t/2-gs], [t+ow/2+sk*2-sd, h*2/5-t/2], [t+gs+sk*2+gs, t+2*gs+s]]
+                        ,[[ow/2+t+gs+sk*2+gs, h*2/5-t-sd], [ow/2+t+gs+sk*3+gs+s, t+gs], [ow/2+t+ow/2+gs+sk*3, t+gs], [ow/2+t+ow/2+gs+sk*3, t+2*gs+s], [ow/2+t+ow/2+sk*2-sd, h*2/5-t/2-gs], [ow/2+t+gs+sk*2+gs, h*2/5-t/2]]); // center  for M
+                    // ,[[ow/2+t+gs+sk*2+gs, ], [ow/2+t+gs+sk*2+gs+s, t+gs], [ow/2+t+ow/2+gs+sk*2, ], [ow/2+t+ow/2+gs+sk*2, h*2/5-t/2-gs], [ow/2+t+ow/2+sk*2-sd, ], [ow/2+t+gs+sk*2+gs, ]]); // center  for M
+                result = all;break;
             case "u": all.splice(4,2);result = all;break;
-            case "v": all.splice(4,3); all.splice(2,1);result = all;break;
+            case "v": all.splice(4,3); all.splice(2,1);
+                all.push([[t+gs, h-sd], [t+gs, h-sd-t/2-gs], [t+gs+ow+sk*2, h/2+t/2-sd], [t+gs+ow+s+sk*2, h/2], [t+gs+ow+sk*2+s, h/2+t], [t+gs+s, h-sd]]); // bottom to center for V
+                result = all;break;
             case "l": all.splice(2,4);
                 all.push([[w-sd-sk*2, h-(sd+gs)], [w-sk*2, h-(t+gs)], [w-sk*1.5, h-(t+gs+oh/2)], [w-(sd+sk*1.5), h-(t+gs+oh/2+s)], [w-(t+sk*1.5),h-(t+gs+oh/2)], [w-t-sk*2, h-(t+gs)]]); // right bottom for L
                 result = all; break;
