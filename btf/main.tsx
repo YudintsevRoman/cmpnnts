@@ -8,7 +8,7 @@ class Btfwatches extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name == "value" && newValue != null) {
+        if (name == "value" && newValue != null && newValue.replace(" ") != "") {
             this.fixTime = true;
             this.btfValue = newValue;
         }
