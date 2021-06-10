@@ -152,7 +152,7 @@ class Btfwatches extends HTMLElement {
         // ctx.fillStyle = hide ? "#000" : this.digitColor;
         ctx.beginPath();
         ctx.fillStyle = "#000";
-        ctx.arc(10,10,10, 0, 2*Math.PI);
+        ctx.arc(10, 10, 10, 0, 2 * Math.PI);
         ctx.fill();
         ctx.beginPath();
         ctx.fillStyle = hide ? "#000" : this.digitColor;
@@ -160,11 +160,12 @@ class Btfwatches extends HTMLElement {
         ctx.fill();
         // ctx.stroke();
         // ctx.closePath();
-        ctx.moveTo(10,37);
+        ctx.moveTo(10, 37);
         ctx.beginPath();
         ctx.fillStyle = "#000";
-        ctx.arc(10,37,10, 0,2*Math.PI);
+        ctx.arc(10, 37, 10, 0, 2 * Math.PI);
         ctx.fill();
+        hide = this.fixTime ? !hide : hide;
         ctx.beginPath();
         ctx.fillStyle = hide ? "#000" : this.digitColor;
         ctx.arc(10,37,8, 0,2*Math.PI);
