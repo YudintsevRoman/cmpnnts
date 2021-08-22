@@ -96,7 +96,7 @@ class ElectroLetter extends ElectroSymbol {
     attributeChangedCallback(name, oldValue, newValue) {
         this.update();
     }
-
+//I, K, Q, U, V, W, X, Z.
     getSymbol(letter = "") {
         let result = [];
         let w  = 44; let h = 74; let t = 8; let gs = 1; let sk = 1;
@@ -144,15 +144,19 @@ class ElectroLetter extends ElectroSymbol {
                     ,[[sd+gs+sk*2+ow*2/3, h/2+oh/2], [t+gs+sk*2+ow*2/3, h/2-t/2+oh/2], [t+gs+ow+sk*2, h/2-t/2+oh/2], [t+gs+ow+s+sk*2, h/2+oh/2], [t+gs+ow+sk*2, h/2+t/2+oh/2], [t+gs+sk*2+ow*2/3, h/2+t/2+oh/2]]); // right bottom, center for G
                 result = all;break;
             case "h": all.splice(6,1); all.splice(4,1);result = all;break;
+            case "i": all = [];
+                all.push([[sk*3+ow/2+t/2, t+gs], [sk*2+ow/2+t/2, t+gs+oh], [sk*2+ow/2+t, t+gs+oh+s], [t+sk*2+ow/2+t/2, t+gs+oh], [t+sk*3+ow/2+t/2, t+gs]]
+                    ,[[sd+gs+sk*3+w/8, sd], [t+gs+sk*3+w/8, 0], [t+gs+ow+sk*3-w/8, 0], [t+gs+ow+s+sk*3-w/8, sd], [t+gs+ow+sk*3-w/8, t], [t+gs+sk*3+w/8, t]]
+                    ,[[ow/2+t/2, h-(t+gs)], [sk+ow/2+t/2, h-(t+gs+oh)], [sk+ow/2+t, h-(t+gs+oh+s)], [t+sk+ow/2+t/2,h-(t+gs+oh)], [t+ow/2+t/2, h-(t+gs)]] // center top center botton for T
+                    ,[[sd+gs+w/8, h-sd], [t+gs+w/8, h], [t+gs+ow-w/8, h], [t+gs+ow+s-w/8, h-sd], [t+gs+ow-w/8, h-t], [t+gs+w/8, h-t]]);
+                result = all;break;
             case "j": all.splice(3,3);all.splice(0,2);
                 all.push([[sd+gs+sk*3+ow/2, sd], [t+gs+sk*3+ow/2, 0], [w, 0], [t+gs+ow+sk*3, t], [t+gs+sk*3+ow/2, t]]
                     ,[[w, gs], [w-sk, t+gs+oh], [w-(sd+sk), t+gs+oh+s], [w-(t+sk), t+gs+oh], [w-t, t+gs]]
                     ,[[sd, h-(sd+gs)], [0, h-(t+gs)], [sk, h-(t+gs+oh/2)], [sd+sk, h-(t+gs+oh/2+s)], [t+sk,h-(t+gs+oh/2)], [t, h-(t+gs)]]); // top, right top, left bottom for J
                 result = all;break;
-            case "o": all.splice(5,1);result = all;break;
-            case "p": all.splice(6,1);all.splice(2,1);result = all;break;
-            case "n": all.splice(4,3);
-                all.push([[t+gs+sk*2+gs, t+gs], [t+gs+sk*2+gs+s, t+gs], [t+ow+gs+sk*2, h/2-t-sd], [t+ow+gs+sk*2, h/2-t/2-gs], [t+ow+sk*2-sd, h/2-t/2], [t+gs+sk*2+gs, t+2*gs+s]]); // center  for N
+            case "l": all.splice(2,4);
+                all.push([[w-sd-sk*2, h-(sd+gs)], [w-sk*2, h-(t+gs)], [w-sk*1.5, h-(t+gs+oh/2)], [w-(sd+sk*1.5), h-(t+gs+oh/2+s)], [w-(t+sk*1.5),h-(t+gs+oh/2)], [w-t-sk*2, h-(t+gs)]]); // right bottom for L
                 result = all; break;
             case "m":
                 all.splice(4,3);
@@ -160,13 +164,15 @@ class ElectroLetter extends ElectroSymbol {
                     ,[[ow/2+t+gs+sk*2+gs, h*2/5-t-sd], [ow/2+t+gs+sk*3+gs+s, t+gs], [ow/2+t+ow/2+gs+sk*3, t+gs], [ow/2+t+ow/2+gs+sk*3, t+2*gs+s], [ow/2+t+ow/2+sk*2-sd, h*2/5-t/2-gs], [ow/2+t+gs+sk*2+gs, h*2/5-t/2]]); // center  for M
                 // ,[[ow/2+t+gs+sk*2+gs, ], [ow/2+t+gs+sk*2+gs+s, t+gs], [ow/2+t+ow/2+gs+sk*2, ], [ow/2+t+ow/2+gs+sk*2, h*2/5-t/2-gs], [ow/2+t+ow/2+sk*2-sd, ], [ow/2+t+gs+sk*2+gs, ]]); // center  for M
                 result = all;break;
+            case "n": all.splice(4,3);
+                all.push([[t+gs+sk*2+gs, t+gs], [t+gs+sk*2+gs+s, t+gs], [t+ow+gs+sk*2, h/2-t-sd], [t+ow+gs+sk*2, h/2-t/2-gs], [t+ow+sk*2-sd, h/2-t/2], [t+gs+sk*2+gs, t+2*gs+s]]); // center  for N
+                result = all; break;
+            case "o": all.splice(5,1);result = all;break;
+            case "p": all.splice(6,1);all.splice(2,1);result = all;break;
             case "u": all.splice(4,2);result = all;break;
             case "v": all.splice(4,3); all.splice(2,1);
                 all.push([[t+gs, h-sd], [t+gs, h-sd-t/2-gs], [t+gs+ow+sk*2, h/2+t/2-sd], [t+gs+ow+s+sk*2, h/2], [t+gs+ow+sk*2+s, h/2+t], [t+gs+s, h-sd]]); // bottom to center for V
                 result = all;break;
-            case "l": all.splice(2,4);
-                all.push([[w-sd-sk*2, h-(sd+gs)], [w-sk*2, h-(t+gs)], [w-sk*1.5, h-(t+gs+oh/2)], [w-(sd+sk*1.5), h-(t+gs+oh/2+s)], [w-(t+sk*1.5),h-(t+gs+oh/2)], [w-t-sk*2, h-(t+gs)]]); // right bottom for L
-                result = all; break;
             case "r": all.splice(6,1);all.splice(2,1);
                 all.push([[t+gs+sk, h/2+t/2+gs], [t+gs+sk, h/2+t/2+2*gs+s], [t+gs+ow, h-sd], [t+gs+ow+s, h-sd], [t+gs+ow+s, h-t-sd], [t+2*gs+s+sk, h/2+t/2+gs]]); // bottom for R
                 result = all;break;
@@ -174,6 +180,13 @@ class ElectroLetter extends ElectroSymbol {
             case "t": all.splice(5,2);all.splice(0,4);
                 all.push([[sk*3+ow/2+t/2, t+gs], [sk*2+ow/2+t/2, t+gs+oh], [sk*2+ow/2+t, t+gs+oh+s], [t+sk*2+ow/2+t/2, t+gs+oh], [t+sk*3+ow/2+t/2, t+gs]]
                     ,[[ow/2+t, h-(sd+gs)], [ow/2+t/2, h-(t+gs)], [sk+ow/2+t/2, h-(t+gs+oh)], [sk+ow/2+t, h-(t+gs+oh+s)], [t+sk+ow/2+t/2,h-(t+gs+oh)], [t+ow/2+t/2, h-(t+gs)]]); // center top center botton for T
+                result = all;break;
+            case "x": all = [];
+                all.push([[sd+sk*3, sd+gs], [sk*3, t+gs], [sk*2+ow/2, t+gs+oh], [sd+sk*2+ow/2+t/2, t+gs+oh+s], [sd+sk*2+ow/2+t/2, t+gs+oh-sd], [t+sk*3, s+gs]]
+                    ,[[w-sd, sd+gs], [w, t+gs], [w-sk-ow/2, t+gs+oh], [w-(sd+sk)-ow/2-t/2, t+gs+oh+s], [w-(t+sk)-ow/2, t+gs+oh-sd], [w-t, s+gs]]
+                    ,[[sd, h-(sd+gs)], [0, h-(t+gs)], [sk*2+ow/2, h-(t+gs+oh)], [sd+sk*2+ow/2+t/2, h-(t+gs+oh+s)], [sd+sk*2+ow/2+t/2, h-(t+gs+oh-sd)], [t, h-(s+gs)]]
+                    ,[[w-sd, h-(sd+gs)], [w, h-(t+gs)], [w-ow/2, h-(t+gs+oh)], [w-sd-ow/2-t/2, h-(t+gs+oh+s)], [w-t-ow/2, h-(t+gs+oh-sd)], [w-t, h-(s+gs)]]
+                ); // all for X
                 result = all;break;
             case "y": all = [];
                 all.push([[ow/2+t, h-(sd+gs)], [ow/2+t/2, h-(t+gs)], [sk+ow/2+t/2, h-(t+gs+oh)], [sk+ow/2+t, h-(t+gs+oh+s)], [t+sk+ow/2+t/2,h-(t+gs+oh)], [t+ow/2+t/2, h-(t+gs)]]
